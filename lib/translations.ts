@@ -5,7 +5,6 @@ export const translations = {
     "nav.about": "About",
     "nav.contact": "Contact",
     "nav.order": "Order Now",
-
     "hero.badge": "Kabul Street Food",
     "hero.tagline": "Hot . Spicy . Special",
     "hero.title": "More Than",
@@ -16,14 +15,8 @@ export const translations = {
     "hero.cta.secondary": "See Menu",
     "hero.stat.customers": "Customers",
     "hero.stat.orders": "Daily Orders",
-    "hero.stat.years": "Years",
-    "hero.tagline": "Hot . Spicy . Special",
-    "contact.info.phone": "+93 797 441 319",
-    "contact.info.instagram": "@khaasta.macaroni",
-
     "section.menu.title": "Our Menu",
     "section.menu.subtitle": "Simple, bold, and always fresh",
-
     "section.why.title": "Why Khaasta?",
     "section.why.subtitle": "We put passion in every bowl",
     "why.clean.title": "Clean",
@@ -35,7 +28,6 @@ export const translations = {
     "why.fast.desc": "Hot and ready in minutes — your time is valuable.",
     "why.quality.title": "Quality",
     "why.quality.desc": "Only the finest ingredients make it into our bowls.",
-
     "section.about.title": "About Khaasta",
     "section.about.subtitle": "Kabul Street Food — Our Passion",
     "section.about.text":
@@ -48,7 +40,6 @@ export const translations = {
     "about.stat3.label": "Fresh Daily",
     "about.stat4.value": "#1",
     "about.stat4.label": "In Kabul",
-
     "section.contact.title": "Find Us",
     "section.contact.subtitle":
       "Come visit us or place your order — we are always ready.",
@@ -58,24 +49,22 @@ export const translations = {
     "contact.send": "Send Message",
     "contact.sent": "Message Sent!",
     "contact.info.address": "Kabul, Afghanistan",
-    "contact.info.phone": "+93 700 000 000",
+    "contact.info.phone": "+93 797 441 319",
     "contact.info.hours": "Every Day, 10am – 10pm",
     "contact.info.instagram": "@khaasta.macaroni",
-
-    "footer.desc": "Hot. Spicy. Special. Khaasta Macaroni — Kabul Street Food.",
+    "footer.desc":
+      "Special Taste, Special Feeling. Khaasta Macaroni — Kabul Street Food.",
     "footer.links": "Quick Links",
     "footer.contact": "Contact",
     "footer.follow": "Follow Us",
     "footer.rights": "© 2026 Khaasta Macaroni. All rights reserved.",
   },
-
   fa: {
     "nav.home": "خانه",
     "nav.menu": "منو",
     "nav.about": "درباره ما",
     "nav.contact": "تماس",
     "nav.order": "سفارش دهید",
-
     "hero.badge": "غذای خیابانی کابل",
     "hero.tagline": "داغ . تند . خاص",
     "hero.title": "بیشتر از",
@@ -86,14 +75,8 @@ export const translations = {
     "hero.cta.secondary": "مشاهده منو",
     "hero.stat.customers": "مشتری",
     "hero.stat.orders": "سفارش روزانه",
-    "hero.stat.years": "سال",
-
-    "hero.tagline": "داغ . تند . خاص",
-    "contact.info.phone": "۰۷۹۷ ۴۴۱ ۳۱۹",
-    "contact.info.instagram": "@khaasta.macaroni",
     "section.menu.title": "منوی ما",
     "section.menu.subtitle": "ساده، جسورانه و همیشه تازه",
-
     "section.why.title": "چرا خاصتا؟",
     "section.why.subtitle": "ما عشق را در هر کاسه می‌ریزیم",
     "why.clean.title": "تمیز",
@@ -105,7 +88,6 @@ export const translations = {
     "why.fast.desc": "داغ و آماده در چند دقیقه — وقت شما ارزشمند است.",
     "why.quality.title": "کیفیت",
     "why.quality.desc": "فقط بهترین مواد اولیه وارد کاسه‌های ما می‌شود.",
-
     "section.about.title": "درباره خاصتا",
     "section.about.subtitle": "غذای خیابانی کابل — اشتیاق ما",
     "section.about.text":
@@ -118,7 +100,6 @@ export const translations = {
     "about.stat3.label": "تازه روزانه",
     "about.stat4.value": "#۱",
     "about.stat4.label": "در کابل",
-
     "section.contact.title": "ما را پیدا کنید",
     "section.contact.subtitle":
       "بیایید پیش ما یا سفارش دهید — همیشه آماده‌ایم.",
@@ -128,11 +109,10 @@ export const translations = {
     "contact.send": "ارسال پیام",
     "contact.sent": "پیام ارسال شد!",
     "contact.info.address": "کابل، افغانستان",
-    "contact.info.phone": "۰۰۹۳ ۷۰۰ ۰۰۰ ۰۰۰",
+    "contact.info.phone": "۰۷۹۷ ۴۴۱ ۳۱۹",
     "contact.info.hours": "هر روز، ۱۰ صبح – ۱۰ شب",
     "contact.info.instagram": "@khaasta.macaroni",
-
-    "footer.desc": "داغ. تند. خاص. خاصتا مکرونی — غذای خیابانی کابل.",
+    "footer.desc": "طعم خاص، حال خاص. خاصتا مکرونی — غذای خیابانی کابل.",
     "footer.links": "لینک‌های سریع",
     "footer.contact": "تماس",
     "footer.follow": "دنبال کنید",
