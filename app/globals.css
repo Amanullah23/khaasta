@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-poppins, system-ui), sans-serif;
+  -webkit-font-smoothing: antialiased;
+  background: #0a0a0a;
+  color: #ffffff;
+}
+
+[dir='rtl'],
+[dir='rtl'] * {
+  font-family: var(--font-vazirmatn, system-ui), sans-serif;
+}
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #111; }
+::-webkit-scrollbar-thumb { background: #dc2626; border-radius: 9999px; }
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.float-1 { animation: float 3.5s ease-in-out infinite; }
+.float-2 { animation: float 4s ease-in-out infinite 0.4s; }
+.float-3 { animation: float 3.8s ease-in-out infinite 0.8s; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.flame { animation: flicker 1.5s ease-in-out infinite; }
+
+.gold-text {
+  background: linear-gradient(135deg, #F59E0B, #FBBF24, #D97706);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.red-glow { box-shadow: 0 0 30px rgba(220, 38, 38, 0.4); }
+.gold-glow { box-shadow: 0 0 30px rgba(245, 158, 11, 0.3); }
+
+
+/* Force visible on mobile / if observer misses */
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
