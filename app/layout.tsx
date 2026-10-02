@@ -25,7 +25,7 @@ const vazirmatn = Vazirmatn({
 export const metadata: Metadata = {
   title: "Khaasta Macaroni | داغ . تند . خاص",
   description:
-    "خاصتا مکرونی — بهترین مکرونی کابل. Khaasta Macaroni — Kabul Street Food. Hot. Spicy. Special.",
+    "خاص تا مکرونی — بهترین مکرونی کابل. Khaasta Macaroni — Kabul Street Food. Hot. Spicy. Special.",
 };
 
 export default async function RootLayout({

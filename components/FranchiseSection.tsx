@@ -43,12 +43,12 @@ export default function FranchiseSection() {
       {
         icon: faHandshake,
         title: "با ما تماس بگیرید",
-        desc: "با تیم ما تماس بگیرید و علاقه خود را برای تبدیل شدن به شریک خاصتا ابراز کنید.",
+        desc: "با تیم ما تماس بگیرید و علاقه خود را برای تبدیل شدن به شریک خاص تا ابراز کنید.",
       },
       {
         icon: faCartShopping,
         title: "کارت خود را بگیرید",
-        desc: "ما کارت برندشده خاصتا را به شما می‌دهیم، کاملاً مجهز و آماده برای کار.",
+        desc: "ما کارت برندشده خاص تا را به شما می‌دهیم، کاملاً مجهز و آماده برای کار.",
       },
       {
         icon: faMapLocationDot,
@@ -58,7 +58,7 @@ export default function FranchiseSection() {
       {
         icon: faMoneyBillWave,
         title: "شروع به درآمد کنید",
-        desc: "از روز اول با پشتیبانی کامل تیم خاصتا شروع به فروش و کسب درآمد کنید.",
+        desc: "از روز اول با پشتیبانی کامل تیم خاص تا شروع به فروش و کسب درآمد کنید.",
       },
     ],
   };
@@ -118,11 +118,13 @@ export default function FranchiseSection() {
             {isRTL ? "فرانچایز" : "Franchise"}
           </div>
           <h2 className="text-4xl sm:text-5xl font-black text-white mb-4">
-            {isRTL ? "کارت خاصتا خودت را داشته باش!" : "Own Your Khaasta Cart!"}
+            {isRTL
+              ? "کارت خاص تا خودت را داشته باش!"
+              : "Own Your Khaasta Cart!"}
           </h2>
           <p className="text-gray-500 max-w-xl mx-auto text-sm sm:text-base">
             {isRTL
-              ? "می‌خواهی کارت مکرونی خاصتا خودت را داشته باشی؟ به خانواده خاصتا بپیوند و کسب‌وکار خود را شروع کن."
+              ? "می‌خواهی کارت مکرونی خاص تا خودت را داشته باشی؟ به خانواده خاص تا بپیوند و کسب‌وکار خود را شروع کن."
               : "Want to open your own Khaasta Macaroni cart? Join the Khaasta family and start your own business today."}
           </p>
         </div>
@@ -143,7 +145,7 @@ export default function FranchiseSection() {
               <div className="relative z-10">
                 <div className="text-7xl mb-4 float-1">🛒</div>
                 <div className="text-2xl font-black gold-text mb-2">
-                  {isRTL ? "کارت خاصتا" : "Khaasta Cart"}
+                  {isRTL ? "کارت خاص تا" : "Khaasta Cart"}
                 </div>
                 <div className="text-gray-500 text-sm tracking-widest uppercase mb-6">
                   {isRTL
@@ -233,7 +235,7 @@ export default function FranchiseSection() {
             </h3>
             <p className="text-gray-500 mb-8 max-w-lg mx-auto text-sm">
               {isRTL
-                ? "همین حالا با ما تماس بگیرید و اولین قدم را برای راه‌اندازی کارت مکرونی خاصتا خود بردارید."
+                ? "همین حالا با ما تماس بگیرید و اولین قدم را برای راه‌اندازی کارت مکرونی خاص تا خود بردارید."
                 : "Contact us now and take the first step toward launching your own Khaasta Macaroni cart."}
             </p>
             <div className="flex flex-wrap items-center justify-center gap-4">
