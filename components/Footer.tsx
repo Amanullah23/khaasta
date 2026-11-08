@@ -28,7 +28,7 @@ export default function Footer() {
   const socials = [
     {
       icon: faInstagram,
-      href: "#",
+      href: "https://www.instagram.com/khaasta.macaroni",
       label: "Instagram",
       color: "hover:bg-pink-600",
     },
@@ -40,11 +40,16 @@ export default function Footer() {
     },
     {
       icon: faFacebook,
-      href: "#",
+      href: "https://www.facebook.com/share/1ciVvnoBYM/",
       label: "Facebook",
       color: "hover:bg-blue-700",
     },
-    { icon: faTiktok, href: "#", label: "TikTok", color: "hover:bg-gray-700" },
+    {
+      icon: faTiktok,
+      href: "https://www.tiktok.com/@khaasta.macaroni",
+      label: "TikTok",
+      color: "hover:bg-gray-700",
+    },
   ];
 
   return (
@@ -169,7 +174,7 @@ export default function Footer() {
               <div className="text-4xl mb-3 text-center">🍝</div>
               <p className="text-sm text-gray-400 leading-relaxed text-center font-medium">
                 {isRTL
-                  ? "طعم خاص، حال خاص! خاص تا مکرونی — داغ. تند. خاص."
+                  ? "طعم خاص، حال خاص! خاصتا مکرونی — داغ. تند. خاص."
                   : "Special Taste, Special Feeling! Khaasta — Hot. Spicy. Special."}
               </p>
               <div className="mt-4 flex items-center justify-center gap-2">

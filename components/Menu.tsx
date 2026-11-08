@@ -2,68 +2,10 @@
 import { useEffect, useRef } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faFire,
-  faStar,
-  faLeaf,
-  faDrumstickBite,
-} from "@fortawesome/free-solid-svg-icons";
-
-type Lang = "en" | "fa";
-
-const menuItems = [
-  {
-    image: "/plain.png",
-    name: { en: "Plain Macaroni", fa: "مکرونی ساده" },
-    desc: {
-      en: "Classic Khaasta macaroni with our signature tomato sauce. Simple, bold, delicious.",
-      fa: "مکرونی کلاسیک خاص تا با سس گوجه منحصربه‌فرد ما. ساده، جسورانه، خوشمزه.",
-    },
-    price: "100 AF",
-    badge: { en: "Classic", fa: "کلاسیک" },
-    badgeColor: "bg-gray-700 text-gray-300",
-    icon: faLeaf,
-    borderColor: "border-gray-700 hover:border-yellow-500/60",
-    glowColor: "hover:shadow-yellow-900/20",
-    tag: { en: "Best Seller", fa: "پرفروش‌ترین" },
-    tagColor: "bg-yellow-500/10 text-yellow-400 border-yellow-500/30",
-  },
-  {
-    image: "/spicy.png",
-    name: { en: "Spicy Macaroni", fa: "مکرونی تند" },
-    desc: {
-      en: "Extra hot and spicy — for those who dare to feel the heat. Not for the faint-hearted.",
-      fa: "فوق‌العاده داغ و تند — برای کسانی که جرأت احساس حرارت را دارند.",
-    },
-    price: "120 AF",
-    badge: { en: "Hot 🔥", fa: "تند 🔥" },
-    badgeColor: "bg-red-600/20 text-red-400",
-    icon: faFire,
-    borderColor: "border-red-900/50 hover:border-red-500/70",
-    glowColor: "hover:shadow-red-900/30",
-    tag: { en: "Most Popular", fa: "محبوب‌ترین" },
-    tagColor: "bg-red-600/10 text-red-400 border-red-600/30",
-  },
-  {
-    image: "/chicken.png",
-    name: { en: "Chicken Macaroni", fa: "مکرونی مرغ" },
-    desc: {
-      en: "Tender grilled chicken with Khaasta sauce on a bed of perfectly cooked macaroni.",
-      fa: "مرغ کبابی لطیف با سس خاص تا روی مکرونی کاملاً پخته شده.",
-    },
-    price: "150 AF",
-    badge: { en: "Special", fa: "خاص" },
-    badgeColor: "bg-yellow-500/10 text-yellow-400",
-    icon: faDrumstickBite,
-    borderColor: "border-yellow-900/50 hover:border-yellow-500/70",
-    glowColor: "hover:shadow-yellow-900/20",
-    tag: { en: "Premium", fa: "ویژه" },
-    tagColor: "bg-yellow-500/10 text-yellow-400 border-yellow-500/30",
-  },
-];
+import { faFire, faStar, faClock } from "@fortawesome/free-solid-svg-icons";
 
 export default function Menu() {
-  const { t, lang, isRTL } = useLanguage();
+  const { t, isRTL } = useLanguage();
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -87,7 +29,6 @@ export default function Menu() {
       dir={isRTL ? "rtl" : "ltr"}
       ref={sectionRef}
     >
-      {/* Background glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-red-600/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -105,82 +46,102 @@ export default function Menu() {
           </p>
         </div>
 
-        {/* Menu Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-          {menuItems.map((item, i) => (
+        {/* Single item + coming soon */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
+          {/* Current item */}
+          <div className="reveal group relative bg-gradient-to-b from-gray-900/80 to-black rounded-3xl border-2 border-red-900/50 hover:border-red-500/70 transition-all duration-300 hover:shadow-2xl hover:shadow-red-900/30 hover:-translate-y-1 overflow-hidden">
+            {/* Tag */}
             <div
-              key={i}
-              className={`reveal group relative bg-gradient-to-b from-gray-900/80 to-black rounded-3xl border-2 ${item.borderColor} transition-all duration-300 hover:shadow-2xl ${item.glowColor} hover:-translate-y-1 overflow-hidden`}
-              style={{ transitionDelay: `${i * 0.1}s` }}
+              className={`absolute top-4 ${isRTL ? "left-4" : "right-4"} z-10 text-xs font-bold px-3 py-1 rounded-full border bg-red-600/10 text-red-400 border-red-600/30`}
             >
-              {/* Tag top right */}
-              <div
-                className={`absolute top-4 ${isRTL ? "left-4" : "right-4"} z-10 text-xs font-bold px-3 py-1 rounded-full border ${item.tagColor}`}
-              >
-                {item.tag[lang as Lang]}
+              {isRTL ? "موجود" : "Available"}
+            </div>
+
+            {/* Image */}
+            <div className="w-full h-52 overflow-hidden">
+              <img
+                src="/plain.png"
+                alt="Khaasta Macaroni"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+
+            {/* Content */}
+            <div className="p-6">
+              <div className="inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1 rounded-full mb-3 bg-yellow-500/10 text-yellow-400">
+                <FontAwesomeIcon icon={faFire} className="text-[10px] flame" />
+                {isRTL ? "خاص" : "Special"}
               </div>
 
-              {/* Image — fixed height, full width, covers top of card */}
-              <div className="w-full h-52 overflow-hidden">
-                <img
-                  src={item.image}
-                  alt={item.name.en}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-              </div>
+              <h3 className="text-xl font-black text-white mb-2">
+                {isRTL ? "خاصتا مکرونی" : "Khaasta Macaroni"}
+              </h3>
 
-              {/* Content */}
-              <div className="p-6">
-                {/* Badge */}
-                <div
-                  className={`inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1 rounded-full mb-3 ${item.badgeColor}`}
-                >
-                  <FontAwesomeIcon icon={item.icon} className="text-[10px]" />
-                  {item.badge[lang as Lang]}
-                </div>
+              <p className="text-gray-500 text-sm leading-relaxed mb-6">
+                {isRTL
+                  ? "مکرونی با طعم منحصربه‌فرد خاصتا — داغ، تند و خاص. تجربه‌ای که هرگز فراموش نمی‌کنید."
+                  : "Macaroni with Khaasta's unique flavor — hot, spicy and special. An experience you will never forget."}
+              </p>
 
-                {/* Name */}
-                <h3 className="text-xl font-black text-white mb-2">
-                  {item.name[lang as Lang]}
-                </h3>
-
-                {/* Desc */}
-                <p className="text-gray-500 text-sm leading-relaxed mb-6">
-                  {item.desc[lang as Lang]}
-                </p>
-
-                {/* Bottom row */}
-                <div className="flex items-center justify-between pt-4 border-t border-white/5">
-                  <div>
-                    <div className="text-xs text-gray-600 mb-0.5">
-                      {isRTL ? "قیمت" : "Price"}
-                    </div>
-                    <div className="text-2xl font-black gold-text">
-                      {item.price}
-                    </div>
+              <div className="flex items-center justify-between pt-4 border-t border-white/5">
+                <div>
+                  <div className="text-xs text-gray-600 mb-0.5">
+                    {isRTL ? "قیمت" : "Price"}
                   </div>
-                  <a
-                    href="/order"
-                    className="bg-red-600 hover:bg-red-500 text-white text-xs font-bold px-5 py-2.5 rounded-full transition-all duration-200 hover:shadow-lg hover:shadow-red-900/40"
-                  >
-                    {isRTL ? "سفارش" : "Order"}
-                  </a>
+                  <div className="text-2xl font-black gold-text">
+                    {isRTL ? "۵۰ افغانی" : "50 AF"}
+                  </div>
                 </div>
+                <a
+                  href="#contact"
+                  className="bg-red-600 hover:bg-red-500 text-white text-xs font-bold px-5 py-2.5 rounded-full transition-all duration-200 hover:shadow-lg hover:shadow-red-900/40"
+                >
+                  {isRTL ? "سفارش" : "Order"}
+                </a>
+              </div>
 
-                {/* Rating */}
-                <div className="flex items-center gap-1 mt-3">
-                  {[...Array(5)].map((_, j) => (
-                    <FontAwesomeIcon
-                      key={j}
-                      icon={faStar}
-                      className="text-yellow-500 text-xs"
-                    />
-                  ))}
-                  <span className="text-gray-500 text-xs ms-1">5.0</span>
-                </div>
+              {/* Rating */}
+              <div className="flex items-center gap-1 mt-3">
+                {[...Array(5)].map((_, j) => (
+                  <FontAwesomeIcon
+                    key={j}
+                    icon={faStar}
+                    className="text-yellow-500 text-xs"
+                  />
+                ))}
+                <span className="text-gray-500 text-xs ms-1">5.0</span>
               </div>
             </div>
-          ))}
+          </div>
+
+          {/* Coming soon card */}
+          <div className="reveal group relative bg-gradient-to-b from-gray-900/40 to-black rounded-3xl border-2 border-dashed border-white/10 hover:border-yellow-500/30 transition-all duration-300 overflow-hidden flex flex-col items-center justify-center p-10 text-center min-h-[400px]">
+            <div className="w-20 h-20 bg-white/5 border border-white/10 rounded-3xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+              <FontAwesomeIcon
+                icon={faClock}
+                className="text-yellow-500 text-3xl"
+              />
+            </div>
+            <h3 className="text-xl font-black text-white mb-3">
+              {isRTL ? "بزودی..." : "Coming Soon..."}
+            </h3>
+            <p className="text-gray-600 text-sm leading-relaxed">
+              {t("menu.coming")}
+            </p>
+            <div className="mt-6 flex items-center gap-2">
+              <FontAwesomeIcon
+                icon={faFire}
+                className="text-red-500 text-xs flame"
+              />
+              <span className="text-xs gold-text font-bold tracking-widest uppercase">
+                {isRTL ? "داغ . تند . خاص" : "Hot . Spicy . Special"}
+              </span>
+              <FontAwesomeIcon
+                icon={faFire}
+                className="text-red-500 text-xs flame"
+              />
+            </div>
+          </div>
         </div>
 
         {/* Bottom tagline */}
@@ -191,7 +152,7 @@ export default function Menu() {
             </p>
             <p className="text-gray-500 text-sm">
               {isRTL
-                ? "خاص تا مکرونی — داغ. تند. خاص."
+                ? "خاصتا مکرونی — داغ. تند. خاص."
                 : "Khaasta Macaroni — Hot. Spicy. Special."}
             </p>
           </div>

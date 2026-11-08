@@ -6,7 +6,6 @@ import AboutSection from "@/components/AboutSection";
 import FranchiseSection from "@/components/FranchiseSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
-import PromoBanner from "@/components/PromoBanner";
 
 export default function Home() {
   return (
@@ -19,7 +18,6 @@ export default function Home() {
       <FranchiseSection />
       <ContactSection />
       <Footer />
-      <PromoBanner />
     </main>
   );
 }
