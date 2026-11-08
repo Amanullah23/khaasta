@@ -28,6 +28,11 @@ export const metadata: Metadata = {
   title: "Khaasta Macaroni | داغ . تند . خاص",
   description:
     "خاصتا مکرونی — بهترین مکرونی کابل. Khaasta Macaroni — Kabul Street Food. Hot. Spicy. Special.",
+  icons: {
+    icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
+    apple: "/logo.png",
+    shortcut: "/favicon.svg",
+  },
 };
 
 export default async function RootLayout({

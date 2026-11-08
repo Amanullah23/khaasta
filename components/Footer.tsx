@@ -64,30 +64,6 @@ export default function Footer() {
       dir={isRTL ? "rtl" : "ltr"}
     >
       {/* Top CTA strip */}
-      <div className="bg-gradient-to-r from-red-700 via-red-600 to-red-700 py-5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <FontAwesomeIcon
-              icon={faFire}
-              className="text-yellow-400 text-xl flame"
-            />
-            <span className="text-white font-black text-lg tracking-wide">
-              {isRTL ? "امروز سفارش دهید!" : "Order Today!"}
-            </span>
-            <FontAwesomeIcon
-              icon={faFire}
-              className="text-yellow-400 text-xl flame"
-            />
-          </div>
-          <a
-            href="#contact"
-            className="bg-black/30 hover:bg-black/50 text-white font-bold px-6 py-2.5 rounded-full text-sm tracking-wide transition-all duration-200 border border-white/20"
-          >
-            {isRTL ? "همین حالا تماس بگیرید" : "Contact Us Now"}
-          </a>
-        </div>
-      </div>
-
       {/* Main footer */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">

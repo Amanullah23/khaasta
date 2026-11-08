@@ -154,43 +154,74 @@ export default function AboutSection() {
 
           {/* Right: Stats + Visual */}
           <div className="reveal">
+            {/* Big visual */}
             <div className="relative mb-8">
               <div
-                className={`border rounded-3xl p-8 text-center transition-colors duration-300 ${
+                className={`border rounded-3xl overflow-hidden transition-colors duration-300 ${
                   isDark
-                    ? "bg-gradient-to-br from-gray-900 to-black border-red-900/40 red-glow"
-                    : "bg-gray-50 border-red-100 shadow-sm"
+                    ? "bg-gradient-to-br from-gray-900 to-black border-red-900/40"
+                    : "bg-white border-red-100 shadow-lg"
                 }`}
               >
-                <div className="flex justify-center mb-4">
+                {/* Image full width */}
+                <div className="relative w-full h-56 overflow-hidden">
                   <img
                     src="/street.png"
                     alt="Khaasta Street Food"
-                    className="w-28 h-28 object-contain float-1"
+                    className="w-full h-full object-cover"
                   />
+                  {/* Overlay gradient */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+                  {/* Text over image */}
+                  <div className="absolute bottom-0 inset-x-0 p-5">
+                    <div className="text-2xl font-black gold-text mb-0.5">
+                      Khaasta Macaroni
+                    </div>
+                    <div className="text-white/70 text-xs tracking-widest uppercase">
+                      {isRTL ? "داغ . تند . خاص" : "Hot . Spicy . Special"}
+                    </div>
+                  </div>
+                  {/* Fire badge */}
+                  <div className="absolute top-4 right-4 flex items-center gap-1.5 bg-red-600 rounded-full px-3 py-1.5">
+                    <FontAwesomeIcon
+                      icon={faFire}
+                      className="text-yellow-400 text-xs flame"
+                    />
+                    <span className="text-white text-xs font-black">
+                      {isRTL ? "غذای خیابانی کابل" : "Kabul Street Food"}
+                    </span>
+                  </div>
                 </div>
-                <div className="text-2xl font-black gold-text mb-1">
-                  Khaasta Macaroni
-                </div>
+
+                {/* Bottom info strip */}
                 <div
-                  className={`text-sm tracking-widest uppercase ${isDark ? "text-gray-500" : "text-gray-400"}`}
+                  className={`flex items-center justify-between px-5 py-4 ${
+                    isDark
+                      ? "border-t border-white/5"
+                      : "border-t border-gray-100"
+                  }`}
                 >
-                  {isRTL ? "داغ . تند . خاص" : "Hot . Spicy . Special"}
-                </div>
-                <div className="mt-4 flex items-center justify-center gap-2">
-                  <FontAwesomeIcon
-                    icon={faFire}
-                    className="text-red-500 flame"
-                  />
-                  <span
-                    className={`text-xs ${isDark ? "text-gray-400" : "text-gray-500"}`}
-                  >
-                    {isRTL ? "غذای خیابانی کابل" : "Kabul Street Food"}
-                  </span>
-                  <FontAwesomeIcon
-                    icon={faFire}
-                    className="text-red-500 flame"
-                  />
+                  <div className="flex items-center gap-2">
+                    <FontAwesomeIcon
+                      icon={faFire}
+                      className="text-red-500 flame text-sm"
+                    />
+                    <span
+                      className={`text-xs font-bold ${isDark ? "text-gray-400" : "text-gray-600"}`}
+                    >
+                      {isRTL ? "همیشه تازه" : "Always Fresh"}
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    {[...Array(5)].map((_, j) => (
+                      <span key={j} className="text-yellow-500 text-xs">
+                        ★
+                      </span>
+                    ))}
+                  </div>
+                  <div className={`text-xs font-bold gold-text`}>
+                    {isRTL ? "۵۰ افغانی" : "50 AF"}
+                  </div>
                 </div>
               </div>
             </div>
