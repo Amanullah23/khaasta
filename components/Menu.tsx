@@ -1,11 +1,13 @@
 "use client";
 import { useEffect, useRef } from "react";
 import { useLanguage } from "@/context/LanguageContext";
+import { useTheme } from "@/context/ThemeContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFire, faStar, faClock } from "@fortawesome/free-solid-svg-icons";
 
 export default function Menu() {
   const { t, isRTL } = useLanguage();
+  const { isDark } = useTheme();
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -25,7 +27,9 @@ export default function Menu() {
   return (
     <section
       id="menu"
-      className="py-24 bg-black relative overflow-hidden"
+      className={`py-24 relative overflow-hidden transition-colors duration-300 ${
+        isDark ? "bg-black" : "bg-white"
+      }`}
       dir={isRTL ? "rtl" : "ltr"}
       ref={sectionRef}
     >
@@ -34,14 +38,18 @@ export default function Menu() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className="text-center mb-16 reveal">
-          <div className="inline-flex items-center gap-2 bg-red-600/10 border border-red-600/30 text-red-400 text-xs font-bold px-4 py-2 rounded-full mb-5 uppercase tracking-widest">
+          <div className="inline-flex items-center gap-2 bg-red-600/10 border border-red-600/30 text-red-500 text-xs font-bold px-4 py-2 rounded-full mb-5 uppercase tracking-widest">
             <FontAwesomeIcon icon={faFire} className="flame" />
             {t("section.menu.title")}
           </div>
-          <h2 className="text-4xl sm:text-5xl font-black text-white mb-4">
+          <h2
+            className={`text-4xl sm:text-5xl font-black mb-4 ${isDark ? "text-white" : "text-gray-900"}`}
+          >
             {t("section.menu.title")}
           </h2>
-          <p className="text-gray-500 max-w-md mx-auto text-sm sm:text-base">
+          <p
+            className={`max-w-md mx-auto text-sm sm:text-base ${isDark ? "text-gray-500" : "text-gray-500"}`}
+          >
             {t("section.menu.subtitle")}
           </p>
         </div>
@@ -49,10 +57,16 @@ export default function Menu() {
         {/* Single item + coming soon */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
           {/* Current item */}
-          <div className="reveal group relative bg-gradient-to-b from-gray-900/80 to-black rounded-3xl border-2 border-red-900/50 hover:border-red-500/70 transition-all duration-300 hover:shadow-2xl hover:shadow-red-900/30 hover:-translate-y-1 overflow-hidden">
+          <div
+            className={`reveal group relative rounded-3xl border-2 border-red-900/50 hover:border-red-500/70 transition-all duration-300 hover:shadow-2xl hover:shadow-red-900/30 hover:-translate-y-1 overflow-hidden ${
+              isDark
+                ? "bg-gradient-to-b from-gray-900/80 to-black"
+                : "bg-white shadow-lg"
+            }`}
+          >
             {/* Tag */}
             <div
-              className={`absolute top-4 ${isRTL ? "left-4" : "right-4"} z-10 text-xs font-bold px-3 py-1 rounded-full border bg-red-600/10 text-red-400 border-red-600/30`}
+              className={`absolute top-4 ${isRTL ? "left-4" : "right-4"} z-10 text-xs font-bold px-3 py-1 rounded-full border bg-red-600/10 text-red-500 border-red-600/30`}
             >
               {isRTL ? "موجود" : "Available"}
             </div>
@@ -68,24 +82,32 @@ export default function Menu() {
 
             {/* Content */}
             <div className="p-6">
-              <div className="inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1 rounded-full mb-3 bg-yellow-500/10 text-yellow-400">
+              <div className="inline-flex items-center gap-1.5 text-xs font-bold px-3 py-1 rounded-full mb-3 bg-yellow-500/10 text-yellow-500">
                 <FontAwesomeIcon icon={faFire} className="text-[10px] flame" />
                 {isRTL ? "خاص" : "Special"}
               </div>
 
-              <h3 className="text-xl font-black text-white mb-2">
+              <h3
+                className={`text-xl font-black mb-2 ${isDark ? "text-white" : "text-gray-900"}`}
+              >
                 {isRTL ? "خاصتا مکرونی" : "Khaasta Macaroni"}
               </h3>
 
-              <p className="text-gray-500 text-sm leading-relaxed mb-6">
+              <p
+                className={`text-sm leading-relaxed mb-6 ${isDark ? "text-gray-500" : "text-gray-500"}`}
+              >
                 {isRTL
                   ? "مکرونی با طعم منحصربه‌فرد خاصتا — داغ، تند و خاص. تجربه‌ای که هرگز فراموش نمی‌کنید."
                   : "Macaroni with Khaasta's unique flavor — hot, spicy and special. An experience you will never forget."}
               </p>
 
-              <div className="flex items-center justify-between pt-4 border-t border-white/5">
+              <div
+                className={`flex items-center justify-between pt-4 border-t ${isDark ? "border-white/5" : "border-gray-100"}`}
+              >
                 <div>
-                  <div className="text-xs text-gray-600 mb-0.5">
+                  <div
+                    className={`text-xs mb-0.5 ${isDark ? "text-gray-600" : "text-gray-400"}`}
+                  >
                     {isRTL ? "قیمت" : "Price"}
                   </div>
                   <div className="text-2xl font-black gold-text">
@@ -109,23 +131,43 @@ export default function Menu() {
                     className="text-yellow-500 text-xs"
                   />
                 ))}
-                <span className="text-gray-500 text-xs ms-1">5.0</span>
+                <span
+                  className={`text-xs ms-1 ${isDark ? "text-gray-500" : "text-gray-400"}`}
+                >
+                  5.0
+                </span>
               </div>
             </div>
           </div>
 
           {/* Coming soon card */}
-          <div className="reveal group relative bg-gradient-to-b from-gray-900/40 to-black rounded-3xl border-2 border-dashed border-white/10 hover:border-yellow-500/30 transition-all duration-300 overflow-hidden flex flex-col items-center justify-center p-10 text-center min-h-[400px]">
-            <div className="w-20 h-20 bg-white/5 border border-white/10 rounded-3xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+          <div
+            className={`reveal group relative rounded-3xl border-2 border-dashed transition-all duration-300 overflow-hidden flex flex-col items-center justify-center p-10 text-center min-h-[400px] ${
+              isDark
+                ? "bg-gradient-to-b from-gray-900/40 to-black border-white/10 hover:border-yellow-500/30"
+                : "bg-gray-50 border-gray-200 hover:border-red-300"
+            }`}
+          >
+            <div
+              className={`w-20 h-20 rounded-3xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 border ${
+                isDark
+                  ? "bg-white/5 border-white/10"
+                  : "bg-white border-gray-200 shadow-sm"
+              }`}
+            >
               <FontAwesomeIcon
                 icon={faClock}
                 className="text-yellow-500 text-3xl"
               />
             </div>
-            <h3 className="text-xl font-black text-white mb-3">
+            <h3
+              className={`text-xl font-black mb-3 ${isDark ? "text-white" : "text-gray-900"}`}
+            >
               {isRTL ? "بزودی..." : "Coming Soon..."}
             </h3>
-            <p className="text-gray-600 text-sm leading-relaxed">
+            <p
+              className={`text-sm leading-relaxed ${isDark ? "text-gray-600" : "text-gray-400"}`}
+            >
               {t("menu.coming")}
             </p>
             <div className="mt-6 flex items-center gap-2">
@@ -146,11 +188,21 @@ export default function Menu() {
 
         {/* Bottom tagline */}
         <div className="text-center mt-16 reveal">
-          <div className="inline-block border border-red-600/30 bg-red-600/5 rounded-2xl px-8 py-5">
-            <p className="text-white font-black text-xl mb-1">
+          <div
+            className={`inline-block border rounded-2xl px-8 py-5 ${
+              isDark
+                ? "border-red-600/30 bg-red-600/5"
+                : "border-red-200 bg-red-50"
+            }`}
+          >
+            <p
+              className={`font-black text-xl mb-1 ${isDark ? "text-white" : "text-gray-900"}`}
+            >
               {isRTL ? "طعم خاص، حال خاص!" : "Special Taste, Special Feeling!"}
             </p>
-            <p className="text-gray-500 text-sm">
+            <p
+              className={`text-sm ${isDark ? "text-gray-500" : "text-gray-500"}`}
+            >
               {isRTL
                 ? "خاصتا مکرونی — داغ. تند. خاص."
                 : "Khaasta Macaroni — Hot. Spicy. Special."}

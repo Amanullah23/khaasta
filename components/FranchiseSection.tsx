@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef } from "react";
 import { useLanguage } from "@/context/LanguageContext";
+import { useTheme } from "@/context/ThemeContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faFire,
@@ -14,6 +15,7 @@ import {
 
 export default function FranchiseSection() {
   const { isRTL } = useLanguage();
+  const { isDark } = useTheme();
   const sectionRef = useRef<HTMLDivElement>(null);
 
   const steps = {
@@ -43,12 +45,12 @@ export default function FranchiseSection() {
       {
         icon: faHandshake,
         title: "با ما تماس بگیرید",
-        desc: "با تیم ما تماس بگیرید و علاقه خود را برای تبدیل شدن به شریک خاص تا ابراز کنید.",
+        desc: "با تیم ما تماس بگیرید و علاقه خود را برای تبدیل شدن به شریک خاصتا ابراز کنید.",
       },
       {
         icon: faCartShopping,
         title: "کارت خود را بگیرید",
-        desc: "ما کارت برندشده خاص تا را به شما می‌دهیم، کاملاً مجهز و آماده برای کار.",
+        desc: "ما کارت برندشده خاصتا را به شما می‌دهیم، کاملاً مجهز و آماده برای کار.",
       },
       {
         icon: faMapLocationDot,
@@ -58,7 +60,7 @@ export default function FranchiseSection() {
       {
         icon: faMoneyBillWave,
         title: "شروع به درآمد کنید",
-        desc: "از روز اول با پشتیبانی کامل تیم خاص تا شروع به فروش و کسب درآمد کنید.",
+        desc: "از روز اول با پشتیبانی کامل تیم خاصتا شروع به فروش و کسب درآمد کنید.",
       },
     ],
   };
@@ -98,33 +100,34 @@ export default function FranchiseSection() {
 
   return (
     <section
-      className="py-24 relative overflow-hidden"
-      style={{
-        background:
-          "linear-gradient(180deg, #000000 0%, #0d0303 50%, #000000 100%)",
-      }}
+      className={`py-24 relative overflow-hidden transition-colors duration-300 ${
+        isDark
+          ? "bg-gradient-to-b from-black via-[#0d0303] to-black"
+          : "bg-gray-50"
+      }`}
       dir={isRTL ? "rtl" : "ltr"}
       ref={sectionRef}
     >
-      {/* Glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-red-600/5 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-yellow-600/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
         <div className="text-center mb-16 reveal">
-          <div className="inline-flex items-center gap-2 bg-red-600/10 border border-red-600/30 text-red-400 text-xs font-bold px-4 py-2 rounded-full mb-5 uppercase tracking-widest">
+          <div className="inline-flex items-center gap-2 bg-red-600/10 border border-red-600/30 text-red-500 text-xs font-bold px-4 py-2 rounded-full mb-5 uppercase tracking-widest">
             <FontAwesomeIcon icon={faFire} className="flame" />
             {isRTL ? "فرانچایز" : "Franchise"}
           </div>
-          <h2 className="text-4xl sm:text-5xl font-black text-white mb-4">
-            {isRTL
-              ? "کارت خاص تا خودت را داشته باش!"
-              : "Own Your Khaasta Cart!"}
+          <h2
+            className={`text-4xl sm:text-5xl font-black mb-4 ${isDark ? "text-white" : "text-gray-900"}`}
+          >
+            {isRTL ? "کارت خاصتا خودت را داشته باش!" : "Own Your Khaasta Cart!"}
           </h2>
-          <p className="text-gray-500 max-w-xl mx-auto text-sm sm:text-base">
+          <p
+            className={`max-w-xl mx-auto text-sm sm:text-base ${isDark ? "text-gray-500" : "text-gray-500"}`}
+          >
             {isRTL
-              ? "می‌خواهی کارت مکرونی خاص تا خودت را داشته باشی؟ به خانواده خاص تا بپیوند و کسب‌وکار خود را شروع کن."
+              ? "می‌خواهی کارت مکرونی خاصتا خودت را داشته باشی؟ به خانواده خاصتا بپیوند و کسب‌وکار خود را شروع کن."
               : "Want to open your own Khaasta Macaroni cart? Join the Khaasta family and start your own business today."}
           </p>
         </div>
@@ -133,27 +136,26 @@ export default function FranchiseSection() {
         <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
           {/* Left: Visual */}
           <div className="reveal">
-            <div className="relative bg-gradient-to-br from-gray-900 to-black border border-red-900/30 rounded-3xl p-10 text-center red-glow overflow-hidden">
-              {/* Background pattern */}
-              <div
-                className="absolute inset-0 opacity-[0.03]"
-                style={{
-                  backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23dc2626' fill-opacity='1'%3E%3Cpath d='M20 20c0-5.5-4.5-10-10-10S0 14.5 0 20s4.5 10 10 10 10-4.5 10-10zm10 0c0 5.5 4.5 10 10 10s10-4.5 10-10-4.5-10-10-10-10 4.5-10 10z'/%3E%3C/g%3E%3C/svg%3E")`,
-                }}
-              />
-
+            <div
+              className={`relative border rounded-3xl p-10 text-center overflow-hidden transition-colors duration-300 ${
+                isDark
+                  ? "bg-gradient-to-br from-gray-900 to-black border-red-900/30 red-glow"
+                  : "bg-white border-red-100 shadow-lg"
+              }`}
+            >
               <div className="relative z-10">
                 <div className="text-7xl mb-4 float-1">🛒</div>
                 <div className="text-2xl font-black gold-text mb-2">
-                  {isRTL ? "کارت خاص تا" : "Khaasta Cart"}
+                  {isRTL ? "کارت خاصتا" : "Khaasta Cart"}
                 </div>
-                <div className="text-gray-500 text-sm tracking-widest uppercase mb-6">
+                <div
+                  className={`text-sm tracking-widest uppercase mb-6 ${isDark ? "text-gray-500" : "text-gray-400"}`}
+                >
                   {isRTL
                     ? "کسب‌وکار خود را شروع کن"
                     : "Start Your Own Business"}
                 </div>
 
-                {/* Benefits list */}
                 <div className="grid grid-cols-2 gap-3 text-start">
                   {(isRTL ? benefits.fa : benefits.en).map((b, i) => (
                     <div key={i} className="flex items-center gap-2">
@@ -161,20 +163,33 @@ export default function FranchiseSection() {
                         icon={faCircleCheck}
                         className="text-red-500 text-xs flex-shrink-0"
                       />
-                      <span className="text-gray-400 text-xs">{b}</span>
+                      <span
+                        className={`text-xs ${isDark ? "text-gray-400" : "text-gray-600"}`}
+                      >
+                        {b}
+                      </span>
                     </div>
                   ))}
                 </div>
 
-                {/* Price tag */}
-                <div className="mt-8 inline-block bg-red-600/20 border border-red-600/30 rounded-2xl px-6 py-4">
-                  <div className="text-xs text-gray-500 mb-1 uppercase tracking-widest">
+                <div
+                  className={`mt-8 inline-block border rounded-2xl px-6 py-4 ${
+                    isDark
+                      ? "bg-red-600/20 border-red-600/30"
+                      : "bg-red-50 border-red-200"
+                  }`}
+                >
+                  <div
+                    className={`text-xs mb-1 uppercase tracking-widest ${isDark ? "text-gray-500" : "text-gray-400"}`}
+                  >
                     {isRTL ? "شروع از" : "Starting from"}
                   </div>
                   <div className="text-3xl font-black gold-text">
                     {isRTL ? "قابل مذاکره" : "Negotiable"}
                   </div>
-                  <div className="text-xs text-gray-500 mt-1">
+                  <div
+                    className={`text-xs mt-1 ${isDark ? "text-gray-500" : "text-gray-400"}`}
+                  >
                     {isRTL ? "با تیم ما تماس بگیرید" : "Contact our team"}
                   </div>
                 </div>
@@ -184,36 +199,47 @@ export default function FranchiseSection() {
 
           {/* Right: Steps */}
           <div className="reveal">
-            <h3 className="text-2xl font-black text-white mb-8">
+            <h3
+              className={`text-2xl font-black mb-8 ${isDark ? "text-white" : "text-gray-900"}`}
+            >
               {isRTL ? "چطور شروع کنید" : "How It Works"}
             </h3>
             <div className="space-y-5">
               {(isRTL ? steps.fa : steps.en).map((step, i) => (
                 <div key={i} className="flex gap-5 group">
-                  {/* Step number + icon */}
                   <div className="flex flex-col items-center flex-shrink-0">
-                    <div className="w-12 h-12 bg-red-600/10 border border-red-600/30 group-hover:bg-red-600 group-hover:border-red-600 rounded-2xl flex items-center justify-center transition-all duration-300">
+                    <div
+                      className={`w-12 h-12 border rounded-2xl flex items-center justify-center transition-all duration-300 group-hover:bg-red-600 group-hover:border-red-600 ${
+                        isDark
+                          ? "bg-red-600/10 border-red-600/30"
+                          : "bg-red-50 border-red-200"
+                      }`}
+                    >
                       <FontAwesomeIcon
                         icon={step.icon}
-                        className="text-red-400 group-hover:text-white text-sm transition-colors duration-300"
+                        className="text-red-500 group-hover:text-white text-sm transition-colors duration-300"
                       />
                     </div>
                     {i < 3 && (
-                      <div className="w-px h-full bg-red-900/30 mt-2" />
+                      <div
+                        className={`w-px h-full mt-2 ${isDark ? "bg-red-900/30" : "bg-red-100"}`}
+                      />
                     )}
                   </div>
-
-                  {/* Content */}
                   <div className="pb-6">
                     <div className="flex items-center gap-2 mb-1">
                       <span className="text-xs font-black gold-text">
                         0{i + 1}
                       </span>
-                      <h4 className="text-white font-black text-base">
+                      <h4
+                        className={`font-black text-base ${isDark ? "text-white" : "text-gray-900"}`}
+                      >
                         {step.title}
                       </h4>
                     </div>
-                    <p className="text-gray-500 text-sm leading-relaxed">
+                    <p
+                      className={`text-sm leading-relaxed ${isDark ? "text-gray-500" : "text-gray-500"}`}
+                    >
                       {step.desc}
                     </p>
                   </div>
@@ -225,17 +251,27 @@ export default function FranchiseSection() {
 
         {/* Bottom CTA */}
         <div className="reveal">
-          <div className="bg-gradient-to-br from-red-900/20 to-black border border-red-600/20 rounded-3xl p-10 text-center">
+          <div
+            className={`border rounded-3xl p-10 text-center transition-colors duration-300 ${
+              isDark
+                ? "bg-gradient-to-br from-red-900/20 to-black border-red-600/20"
+                : "bg-white border-red-100 shadow-sm"
+            }`}
+          >
             <FontAwesomeIcon
               icon={faHandshake}
               className="text-red-500 text-4xl mb-5"
             />
-            <h3 className="text-3xl font-black text-white mb-3">
+            <h3
+              className={`text-3xl font-black mb-3 ${isDark ? "text-white" : "text-gray-900"}`}
+            >
               {isRTL ? "آماده شروع هستید؟" : "Ready to Get Started?"}
             </h3>
-            <p className="text-gray-500 mb-8 max-w-lg mx-auto text-sm">
+            <p
+              className={`mb-8 max-w-lg mx-auto text-sm ${isDark ? "text-gray-500" : "text-gray-500"}`}
+            >
               {isRTL
-                ? "همین حالا با ما تماس بگیرید و اولین قدم را برای راه‌اندازی کارت مکرونی خاص تا خود بردارید."
+                ? "همین حالا با ما تماس بگیرید و اولین قدم را برای راه‌اندازی کارت مکرونی خاصتا خود بردارید."
                 : "Contact us now and take the first step toward launching your own Khaasta Macaroni cart."}
             </p>
             <div className="flex flex-wrap items-center justify-center gap-4">

@@ -132,7 +132,7 @@ export const translations = {
     "contact.send": "ارسال پیام",
     "contact.sent": "پیام ارسال شد!",
     "contact.info.address": "کابل، افغانستان",
-    "contact.info.phone": "۰۷۹۷ ۴۴۱ ۳۱۹",
+    "contact.info.phone": "‎+93 797 441 319",
     "contact.info.hours": "هر روز، ۹ صبح – ۷ شب",
     "contact.info.instagram": "@khaasta.macaroni",
     "footer.desc": "طعم خاص، حال خاص. خاصتا مکرونی — غذای خیابانی کابل.",

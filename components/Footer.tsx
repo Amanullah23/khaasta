@@ -1,5 +1,6 @@
 "use client";
 import { useLanguage } from "@/context/LanguageContext";
+import { useTheme } from "@/context/ThemeContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faLocationDot,
@@ -17,6 +18,7 @@ import {
 
 export default function Footer() {
   const { t, isRTL } = useLanguage();
+  const { isDark } = useTheme();
 
   const navLinks = [
     { href: "#home", key: "nav.home" },
@@ -54,7 +56,11 @@ export default function Footer() {
 
   return (
     <footer
-      className="bg-black border-t border-white/5 text-gray-400"
+      className={`border-t transition-colors duration-300 ${
+        isDark
+          ? "bg-black border-white/5 text-gray-400"
+          : "bg-white border-gray-100 text-gray-500"
+      }`}
       dir={isRTL ? "rtl" : "ltr"}
     >
       {/* Top CTA strip */}
@@ -74,10 +80,10 @@ export default function Footer() {
             />
           </div>
           <a
-            href="/order"
+            href="#contact"
             className="bg-black/30 hover:bg-black/50 text-white font-bold px-6 py-2.5 rounded-full text-sm tracking-wide transition-all duration-200 border border-white/20"
           >
-            {isRTL ? "همین حالا سفارش دهید" : "Place Your Order Now"}
+            {isRTL ? "همین حالا تماس بگیرید" : "Contact Us Now"}
           </a>
         </div>
       </div>
@@ -86,15 +92,25 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand */}
-          <div className="lg:col-span-1">
+          <div>
             <a href="/" className="inline-block mb-4">
-              <img
-                src="/logo.png"
-                alt="Khaasta Macaroni"
-                className="h-20 w-auto object-contain"
-              />
+              <div
+                className={`inline-block rounded-2xl p-1 ${
+                  isDark
+                    ? "bg-gradient-to-br from-red-900/40 to-black border border-red-900/40"
+                    : "bg-white shadow-md border border-red-100"
+                }`}
+              >
+                <img
+                  src="/logo.png"
+                  alt="Khaasta Macaroni"
+                  className="h-16 w-auto object-contain rounded-xl"
+                />
+              </div>
             </a>
-            <p className="text-sm leading-relaxed mb-6 text-gray-500">
+            <p
+              className={`text-sm leading-relaxed mb-6 ${isDark ? "text-gray-500" : "text-gray-500"}`}
+            >
               {t("footer.desc")}
             </p>
             <div className="flex gap-3">
@@ -102,8 +118,14 @@ export default function Footer() {
                 <a
                   key={s.label}
                   href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label={s.label}
-                  className={`w-9 h-9 bg-white/5 border border-white/10 ${s.color} rounded-xl flex items-center justify-center text-gray-500 hover:text-white transition-all duration-200`}
+                  className={`w-9 h-9 border ${s.color} rounded-xl flex items-center justify-center hover:text-white transition-all duration-200 ${
+                    isDark
+                      ? "bg-white/5 border-white/10 text-gray-500"
+                      : "bg-gray-50 border-gray-200 text-gray-400"
+                  }`}
                 >
                   <FontAwesomeIcon icon={s.icon} className="text-sm" />
                 </a>
@@ -113,7 +135,9 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-white font-black mb-5 text-sm uppercase tracking-wider">
+            <h4
+              className={`font-black mb-5 text-sm uppercase tracking-wider ${isDark ? "text-white" : "text-gray-900"}`}
+            >
               {t("footer.links")}
             </h4>
             <ul className="space-y-3">
@@ -121,7 +145,11 @@ export default function Footer() {
                 <li key={key}>
                   <a
                     href={href}
-                    className="text-sm text-gray-500 hover:text-yellow-400 transition-colors duration-200 flex items-center gap-2 group"
+                    className={`text-sm transition-colors duration-200 flex items-center gap-2 group ${
+                      isDark
+                        ? "text-gray-500 hover:text-yellow-400"
+                        : "text-gray-500 hover:text-red-600"
+                    }`}
                   >
                     <span className="w-1 h-1 bg-red-600 rounded-full group-hover:bg-yellow-400 transition-colors" />
                     {t(key)}
@@ -133,7 +161,9 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="text-white font-black mb-5 text-sm uppercase tracking-wider">
+            <h4
+              className={`font-black mb-5 text-sm uppercase tracking-wider ${isDark ? "text-white" : "text-gray-900"}`}
+            >
               {t("footer.contact")}
             </h4>
             <ul className="space-y-4">
@@ -141,17 +171,17 @@ export default function Footer() {
                 {
                   icon: faLocationDot,
                   key: "contact.info.address",
-                  color: "text-red-400",
+                  color: "text-red-500",
                 },
                 {
                   icon: faPhone,
                   key: "contact.info.phone",
-                  color: "text-green-400",
+                  color: "text-green-500",
                 },
                 {
                   icon: faClock,
                   key: "contact.info.hours",
-                  color: "text-yellow-400",
+                  color: "text-yellow-500",
                 },
               ].map((item) => (
                 <li key={item.key} className="flex items-start gap-3">
@@ -159,20 +189,50 @@ export default function Footer() {
                     icon={item.icon}
                     className={`${item.color} mt-0.5 flex-shrink-0 text-sm`}
                   />
-                  <span className="text-sm text-gray-500">{t(item.key)}</span>
+                  <span
+                    className={`text-sm ${isDark ? "text-gray-500" : "text-gray-500"}`}
+                    dir={item.key === "contact.info.phone" ? "ltr" : undefined}
+                  >
+                    {t(item.key)}
+                  </span>
                 </li>
               ))}
+              {/* Instagram styled */}
+              <li className="flex items-start gap-3">
+                <FontAwesomeIcon
+                  icon={faInstagram}
+                  className="text-pink-500 mt-0.5 flex-shrink-0 text-sm"
+                />
+                <a
+                  href="https://www.instagram.com/khaasta.macaroni"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 bg-gradient-to-r from-pink-500/10 to-purple-500/10 border border-pink-500/20 text-pink-500 font-bold px-3 py-1 rounded-full text-xs hover:border-pink-500/50 transition-all duration-200"
+                >
+                  @khaasta.macaroni
+                </a>
+              </li>
             </ul>
           </div>
 
           {/* Promise box */}
           <div>
-            <h4 className="text-white font-black mb-5 text-sm uppercase tracking-wider">
+            <h4
+              className={`font-black mb-5 text-sm uppercase tracking-wider ${isDark ? "text-white" : "text-gray-900"}`}
+            >
               {isRTL ? "شعار ما" : "Our Promise"}
             </h4>
-            <div className="bg-gradient-to-br from-red-900/20 to-black border border-red-900/40 rounded-2xl p-5 red-glow">
+            <div
+              className={`border rounded-2xl p-5 ${
+                isDark
+                  ? "bg-gradient-to-br from-red-900/20 to-black border-red-900/40 red-glow"
+                  : "bg-red-50 border-red-100"
+              }`}
+            >
               <div className="text-4xl mb-3 text-center">🍝</div>
-              <p className="text-sm text-gray-400 leading-relaxed text-center font-medium">
+              <p
+                className={`text-sm leading-relaxed text-center font-medium ${isDark ? "text-gray-400" : "text-gray-600"}`}
+              >
                 {isRTL
                   ? "طعم خاص، حال خاص! خاصتا مکرونی — داغ. تند. خاص."
                   : "Special Taste, Special Feeling! Khaasta — Hot. Spicy. Special."}
@@ -196,24 +256,35 @@ export default function Footer() {
       </div>
 
       {/* Bottom bar */}
-      {/* Bottom bar */}
-      <div className="border-t border-white/5">
+      <div
+        className={`border-t ${isDark ? "border-white/5" : "border-gray-100"}`}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-gray-600 text-xs">{t("footer.rights")}</p>
-          <p className="text-gray-600 text-xs">
+          <p
+            className={`text-xs ${isDark ? "text-gray-600" : "text-gray-400"}`}
+          >
+            {t("footer.rights")}
+          </p>
+          <p
+            className={`text-xs ${isDark ? "text-gray-600" : "text-gray-400"}`}
+          >
             {isRTL ? "طراحی و توسعه توسط" : "Designed & Developed by"}{" "}
             <a
               href="https://yawari.vercel.app"
               target="_blank"
               rel="noopener noreferrer"
-              className="gold-text font-bold hover:underline transition-all"
+              className="gold-text font-bold hover:underline"
             >
               {isRTL ? "امان الله یاوری" : "Amanullah Yawari"}
             </a>
           </p>
           <a
             href="#home"
-            className="w-8 h-8 bg-white/5 hover:bg-red-600 border border-white/10 rounded-xl flex items-center justify-center text-gray-500 hover:text-white transition-all duration-200"
+            className={`w-8 h-8 border rounded-xl flex items-center justify-center transition-all duration-200 hover:bg-red-600 hover:text-white hover:border-red-600 ${
+              isDark
+                ? "bg-white/5 border-white/10 text-gray-500"
+                : "bg-gray-50 border-gray-200 text-gray-400"
+            }`}
           >
             <FontAwesomeIcon icon={faArrowUp} className="text-xs" />
           </a>
